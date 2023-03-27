@@ -141,7 +141,6 @@ for pool in pools:
     pool_stake = int(int(output[-1]['pool_stake'])//1000000)
     pool_tag = pool["pool_tag"]
     stake_dict[pool_tag] = pool_stake
-    t.sleep(0.5)
 
 value_getter = list(stake_dict.values())
 value_getter.sort()
