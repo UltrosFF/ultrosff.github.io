@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>PyScript Tag Create Example</title>
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <py-env>
+  </py-env>
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+          <py-env>
+          </py-env>
+
+  <title>Poolsky</title>
+  <body style="background-color:RoyalBlue;">
+  <style>
+        h1 {
+            font-size: 20px; 
+            color: white; 
+            text-transform: uppercase;
+            text-align: center; 
+            margin: 0 0 35px 0; 
+            text-shadow: 0px 1px 0px #f2f2f2;
+        }
+    
+  p {text-align: center;
+  color: white;}
+
+  small {text-align: center;
+  color: red;}
+
+  img {
+    display: block;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  div {
+  color: white;
+  display: flex;
+  align-items: stretch;
+  justify-content: center
+}
+        }
+</style>
+
+    
+<h1>Poolsky A Hoksy Community Tool</h1>
+    
+<p>last update on: 11/04/2022 </p>
+
+<p>Stake to SEA Idiots!</p>
+<style>
+.vertically {
+ height: 300px;	
+ overflow: hidden;
+ position: relative;
+}
+.vertically .inner {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ /* Starting position */
+ -moz-transform:translateY(40%);
+ -webkit-transform:translateY(40%);	
+ transform:translateY(40%);
+ /* Apply animation to this element */	
+ -moz-animation: vertically 5s linear infinite alternate;
+ -webkit-animation: vertically 5s linear infinite alternate;
+ animation: vertically 5s linear infinite alternate;
+}
+/* Move it (define the animation) */
+@-moz-keyframes vertically {
+ 0%   { -moz-transform: translateY(70%); }
+ 100% { -moz-transform: translateY(0%); }
+}
+@-webkit-keyframes vertically {
+ 0%   { -webkit-transform: translateY(70%); }
+ 100% { -webkit-transform: translateY(0%); }
+}
+@keyframes vertically {
+ 0%   { 
+ -moz-transform: translateY(70%); /* Browser bug fix */
+ -webkit-transform: translateY(70%); /* Browser bug fix */
+ transform: translateY(70%); 		
+ }
+ 100% { 
+ -moz-transform: translateY(0%); /* Browser bug fix */
+ -webkit-transform: translateY(0%); /* Browser bug fix */
+ transform: translateY(0%); 
+ }
+}
+</style>
+<div class="vertically">
+<div class="inner">
+<img src="https://raw.githubusercontent.com/UltrosFF/UtrosFF.github.io/main/src/pistachiosky_1.png" alt="Pistachiosky">
+</div>
+</div>    
+
+<img src="https://raw.githubusercontent.com/UtrosFF/UtrosFF.github.io/main/src/graph.png" alt="pool_stats_graph" border="0">
+<div id="chart1"></div>
+
+</body>
+<py-script>
+from pyodide.http import pyfetch
+import asyncio
+import time as t
+#import pandas as pd
+
+SEA = {"pool_tag": "SEA","pool_id_bech_32":"pool17xh922cr9skc0fqk7sr8at6xx6eluh5qyv9p7ca2x0mtc3st0mz"}
+A3C = {"pool_tag": "A3C","pool_id_bech_32":"pool1zkdaju2rjefa52uh6yh6etsxla0x6aqs6p6wm245y5szk7k3msd"}
+BONE = {"pool_tag": "BONE","pool_id_bech_32":"pool1j742gcsul7u8c05rsqmkgpkvj5qadj0pew69nctu6crqy9wjjn4"}
+CHEF = {"pool_tag": "CHEF","pool_id_bech_32":"pool1dqhaw0h2f4ehpdhh57quszcj22qhkglhg6yvaf39w3clxdl2kpy"}
+FARM = {"pool_tag": "FARM","pool_id_bech_32":"pool1dpu6kslgxlg3ccrwxldl8e6r7ylnq0yalafmucp0yc7k6qegtt0"}
+FIKA = {"pool_tag": "FIKA","pool_id_bech_32":"pool17s3mr9c4ejjfq20dz0ls9ggskc770kt267s9xmw93payzdswwgg"}
+HERO = {"pool_tag": "HERO","pool_id_bech_32":"pool1ykwcqf7r8mj9fmprr9f3y62ftsrlalxm22j383gfpav76ddrc25"}
+ITZA = {"pool_tag": "ITZA","pool_id_bech_32":"pool1c2wa8326fulnkq42uerra78pue48pdwsqru2dhp5xrhsgzqmlsc"}
+JACK = {"pool_tag": "JACK","pool_id_bech_32":"pool1h4gwh638485yd0xcw0pkrm935nvm4aecqsxjx2yzzz0u6dfj73q"}
+LIDO = {"pool_tag": "LIDO","pool_id_bech_32":"pool1kks6sgxvx7p6fe3hhnne68xzwa9jg8qgy50yt3w3lrelvns7390"}
+NANI = {"pool_tag": "NANI","pool_id_bech_32":"pool16r0t5fwwnehltxhh7wfstl8rwvjpz4npdn0s5jd36j0ysflw7ef"}
+PRIDE = {"pool_tag": "PRIDE","pool_id_bech_32":"pool1j099ctc7kcc9fa78dz5qwsy2g0n96lrgletwxvxmyzh4zd7ck0j"}
+PSB = {"pool_tag": "PSB","pool_id_bech_32":"pool17taqml487n9t4r9a6ppvf9qv0qlw2lu4zcrzwfdsfcv6xp7uqym"}
+PSYA = {"pool_tag": "PSYA","pool_id_bech_32":"pool1zytydvyy3qztrs8l2xyggvkfcjctp23m2hc3aj7sudnzgny79cg"}
+QCPOL = {"pool_tag": "QCPOL","pool_id_bech_32":"pool1c2utlagkpht4zj0jetsf245c258geuxnjqp9kf4f2z9rutx9dz4"}
+SALT = {"pool_tag": "SALT","pool_id_bech_32":"pool1a2gt2mvuf5zvtqlvw2xgks2efze3p4r985ft62q64lua7gx7lal"}
+VEGAS = {"pool_tag": "VEGAS","pool_id_bech_32":"pool1df9rj4n0t3zlpak7xnh4ue6t3yh9zlw7a02w4l8askp77up25rt"}
+WOOF = {"pool_tag": "WOOF","pool_id_bech_32":"pool1cg559cdc25fkvs73umj6w5nxlwy3mpmj02xt7p4v69eqs5ncz9k"}
+RARE = {"pool_tag": "RARE","pool_id_bech_32":"pool1mscll7kd2y9c56kv7thv7kv99wjvrr72uwpmuhphaltjz0pkuqa"}
+STOIC = {"pool_tag": "STOIC","pool_id_bech_32":"pool1pxw4z2m0lmw422hr32dwyy3uz9436g8p7qdmg2sl2w0m5pyk3yn"}
+SCIFI = {"pool_tag": "SCIFI","pool_id_bech_32":"pool1lncn6a8xy3dm203m80hr4d4qm53h22a48e2s703z9qr9c20akka"}
+
+
+pools = [STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, HERO, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, JACK, FIKA, LIDO, NANI]
+
+stake_dict = {}
+
+for pool in pools:
+    bech_32 = pool["pool_id_bech_32"]
+    response = await pyfetch(url="https://api.koios.rest/api/v0/pool_stake_snapshot?_pool_bech32="+bech_32,method="GET")
+    output = await response.json()
+    pool_stake = int(int(output[-1]['pool_stake'])//1000000)
+    pool_tag = pool["pool_tag"]
+    stake_dict[pool_tag] = pool_stake
+    t.sleep(0.5)
+
+value_getter = list(stake_dict.values())
+value_getter.sort()
+for stake in value_getter:
+    for key,value in stake_dict.items():
+        if stake == value:
+            print(key,str(stake/1000000) +" Mil. Ada")
+
+#pyscript.write('chart1', m_output)
+</py-script>
+</html>
