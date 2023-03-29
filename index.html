@@ -141,7 +141,7 @@ class Pool:
         self.special_gnomes = pool_stats_file[index]["special gnomes"]
     
     def __str__(self):
-        return f"{self.name}; Weight : {self.weight} Cashgrabs : {self.cashgrabs} Cashgrabs matched : {self.cashgrabs_matched} Gnomeskies : {self.gnomeskies} Shittis : {self.shittis} Cashgrabs with Shittis : {self.shittis_with_cashgrabs} Special Gnomes : {self.special_gnomes}"
+        return f"{self.name}; Weight : {self.weight} Cashgrabs : {self.cashgrabs} matched % : {int(self.cashgrabs_matched)} Gnomeskies : {self.gnomeskies} Shittis : {self.shittis} Cashgrabs with Shittis : {self.shittis_with_cashgrabs} Special Gnomes : {self.special_gnomes}"
 for entry in range(len(catch)):
     stats = Pool(catch,entry)
     print('\n')
