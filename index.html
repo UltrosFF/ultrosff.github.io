@@ -4,9 +4,6 @@
   <title>Poolsky</title>
   <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-  <py-env>
--pandas
-  </py-env>
 </head>
 
   <title>Poolsky</title>
@@ -104,7 +101,7 @@
 from pyodide.http import pyfetch
 import asyncio
 import time as t
-#import pandas as pd
+
 
 SEA = {"pool_tag": "SEA","pool_id_bech_32":"pool17xh922cr9skc0fqk7sr8at6xx6eluh5qyv9p7ca2x0mtc3st0mz"}
 A3C = {"pool_tag": "A3C","pool_id_bech_32":"pool1zkdaju2rjefa52uh6yh6etsxla0x6aqs6p6wm245y5szk7k3msd"}
@@ -128,6 +125,27 @@ RARE = {"pool_tag": "RARE","pool_id_bech_32":"pool1mscll7kd2y9c56kv7thv7kv99wjvr
 STOIC = {"pool_tag": "STOIC","pool_id_bech_32":"pool1pxw4z2m0lmw422hr32dwyy3uz9436g8p7qdmg2sl2w0m5pyk3yn"}
 SCIFI = {"pool_tag": "SCIFI","pool_id_bech_32":"pool1lncn6a8xy3dm203m80hr4d4qm53h22a48e2s703z9qr9c20akka"}
 
+response_2 = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/pool_stats_latest.json",method="GET")
+output_2 = await response_2.json()
+catch = output_2
+
+class Pool:
+    def __init__(self, pool_stats_file,index):
+        self.name = pool_stats_file[index]["pool"]
+        self.weight = pool_stats_file[index]["weight raw"]
+        self.cashgrabs = pool_stats_file[index]["cashg's"]
+        self.cashgrabs_matched = pool_stats_file[index]['cg matched%']
+        self.gnomeskies = pool_stats_file[index]["gnomeskies"]
+        self.shittis = pool_stats_file[index]["shittis"]
+        self.shittis_with_cashgrabs= pool_stats_file[index]["shittis with cgs"]
+        self.special_gnomes = pool_stats_file[index]["special gnomes"]
+    
+    def __str__(self):
+        return f"{self.name}; Weight : {self.weight} Cashgrabs : {self.cashgrabs} Cashgrabs matched : {self.cashgrabs_matched} Gnomeskies : {self.gnomeskies} Shittis : {self.shittis} Cashgrabs with Shittis : {self.shittis_with_cashgrabs} Special Gnomes : {self.special_gnomes}"
+for entry in range(len(catch)):
+    stats = Pool(catch,entry)
+    print('\n')
+    print(stats)
 
 pools = [STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, HERO, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, JACK, FIKA, LIDO, NANI]
 
@@ -147,6 +165,7 @@ for stake in value_getter:
     for key,value in stake_dict.items():
         if stake == value:
             print(key,str(stake/1000000) +" Mil. Ada")
+
 
 #pyscript.write('chart1', m_output)
 </py-script>
