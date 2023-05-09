@@ -1063,6 +1063,6 @@ def plot_pools():
     
 #asd = rq.get("https://cardano-mainnet.blockfrost.io/api/v0/metrics",headers=headers).json()
 #asd
-#plot_pools()
-print(get_delegators(SEA["id"]))
+plot_pools()
+#print(get_delegators(SEA["id"]))
 
