@@ -33,5 +33,6 @@ jobs:
         git config --local user.name "GitHub Action"
         git add src/hosky_asset_metadata_cleaned.json
         git add src/pool_stats_latest.json
+	git add src/graph.png
         git commit -m "Update files via GitHub Actions"
         git push

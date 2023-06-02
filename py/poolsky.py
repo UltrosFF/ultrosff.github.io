@@ -1048,7 +1048,9 @@ def plot_pools():
         x= 'pool',
         y= 'weight raw', errcolor = "r", order = valor_ano.sort_values('weight raw',ascending = False).pool,palette = "RdYlGn")#color="tab:brown"
 
-    plt.savefig(r"C:\Users\Hp\Documents\Reps\UltrosFF.github.io\src\graph" ,transparent=True,dpi=150)
+    
+    file_path = os.path.join(os.path.dirname(__file__), '..', 'src', 'graph.png')
+    plt.savefig(file_path, transparent=True, dpi=150)
 #sns.distplot(df['mpg'])
 #pandas.df.drop()
     
