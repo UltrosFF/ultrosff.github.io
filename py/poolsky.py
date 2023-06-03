@@ -720,7 +720,7 @@ headers={"project_id": project_id}
 
 
 #filename = "hosky_asset_names.json"
-filename2 = r"\hosky_asset_metadata_cleaned.json"
+filename2 = "hosky_asset_metadata_cleaned.json"
 #filename3 = "hosky_asset_names_update.json"
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     HELPERS        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
