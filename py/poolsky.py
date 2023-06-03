@@ -745,7 +745,7 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 parent_path = os.path.dirname(script_path)
 
 def sync_update(cashg_up, gnomes_up):
-    with open(os.path.join(parent_path, "filename2"), "r") as infile:
+    with open(os.path.join(src_path, "hosky_asset_metadata_cleaned.json"), "r") as infile:
         data = json.load(infile)
         data[POLICY_ID].update(cashg_up)
         data[POLICY_ID_2].update(gnomes_up)
@@ -754,7 +754,7 @@ def sync_update(cashg_up, gnomes_up):
 
 def safe_update(data):
     # Define the relative path to the file within the src folder
-    filename2_path = os.path.join(parent_path, "filename2")
+    filename2_path = os.path.join(src_path, "hosky_asset_metadata_cleaned.json")
 
     os.remove(filename2_path)
     with open(filename2_path, "x") as f_name: 
@@ -763,13 +763,9 @@ def safe_update(data):
     return "success"
 
 def overwrite_pool_stats_latest(data):
-    # Define the relative path to the file within the src folder
-    pool_stats_path = os.path.join(src_path, "pool_stats_latest.json")
-
-    os.remove(pool_stats_path)
-    with open(pool_stats_path, "w") as f: 
-        json.dump(data, f)
-        print("updated pool stats")
+    file_path = os.path.join(src_path, 'pool_stats_latest.json')
+    with open(file_path, 'w') as f:
+        json.dump(data, f, indent=4)
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ANALYZE WALLETS FOR NFTS HELPERS        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -855,16 +851,20 @@ def pool_assets(pool_id):
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      HELPERS        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+script_path = os.path.dirname(os.path.abspath(__file__))
+parent_path = os.path.dirname(script_path)
+src_path = os.path.join(parent_path, 'src')
+
 def open_metadata():
-    path = os.path.join(os.environ['GITHUB_WORKSPACE'], 'src', filename2)
-    with open(path, "r") as f:
+    file_path = os.path.join(src_path, 'hosky_asset_metadata_cleaned.json')
+    with open(file_path, "r") as f:
         data = json.load(f)
         Metadata = data[POLICY_ID] 
     return Metadata
 
 def open_metadata_2():
-    path = os.path.join(os.environ['GITHUB_WORKSPACE'], 'src', filename2)
-    with open(path, "r") as f:
+    file_path = os.path.join(src_path, 'hosky_asset_metadata_cleaned.json')
+    with open(file_path, "r") as f:
         data = json.load(f)
         Metadata_2 = data[POLICY_ID_2]
     return Metadata_2
@@ -1059,11 +1059,7 @@ def plot_pools():
 
     file_path = os.path.join(src_path, 'graph.png')
     plt.savefig(file_path, transparent=True, dpi=150)
-#sns.distplot(df['mpg'])
-#pandas.df.drop()
-    
-#asd = rq.get("https://cardano-mainnet.blockfrost.io/api/v0/metrics",headers=headers).json()
-#asd
+
 plot_pools()
 #print(get_delegators(SEA["id"]))
 
