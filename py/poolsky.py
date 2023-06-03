@@ -712,7 +712,7 @@ NANI = {"id": "d0deba25ce9e6ff59af7f39305fce373241156616cdf0a49b1d49e48",
 #BlOCKFROST PARAMS HEADERS
 
 params = {"count": 100,"page": 1, "order": "desc"}
-project_id = os.environ.get("project_id")
+project_id = os.environ.get("PROJECT_ID")
 headers={"project_id": project_id}
 
 
