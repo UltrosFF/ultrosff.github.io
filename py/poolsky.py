@@ -1038,22 +1038,25 @@ def plot_pools():
         start = t.perf_counter()
         catch.extend(pool_stats(x))
         finish = t.perf_counter()
-        print("duration in s: ",start-finish)
+        print("duration in s: ", start - finish)
     overwrite_pool_stats_latest(catch)
     print(catch)
-    valor_ano = pd.DataFrame(catch).sort_values('weight raw',ascending = True)
+    valor_ano = pd.DataFrame(catch).sort_values('weight raw', ascending=True)
     valor_ano.set_index("pool")
 
     plt.figure(figsize=(13, 10))
 
     sns.set_style("whitegrid")
     valor_plot = sns.barplot(
-        data= valor_ano,
-        x= 'pool',
-        y= 'weight raw', errcolor = "r", order = valor_ano.sort_values('weight raw',ascending = False).pool,palette = "RdYlGn")#color="tab:brown"
+        data=valor_ano,
+        x='pool',
+        y='weight raw',
+        errcolor="r",
+        order=valor_ano.sort_values('weight raw', ascending=False).pool,
+        palette="RdYlGn"
+    )
 
-    
-    file_path = os.path.join(os.path.dirname(__file__), '..', 'src', 'graph.png')
+    file_path = os.path.join(src_path, 'graph.png')
     plt.savefig(file_path, transparent=True, dpi=150)
 #sns.distplot(df['mpg'])
 #pandas.df.drop()
