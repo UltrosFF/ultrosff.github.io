@@ -741,6 +741,9 @@ def strip_policy(asset):
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     SAFE        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Define the relative path to the src folder
 
+script_path = os.path.dirname(os.path.abspath(__file__))
+parent_path = os.path.dirname(script_path)
+
 def sync_update(cashg_up, gnomes_up):
     with open(os.path.join(parent_path, 'src', "filename2"), "r") as infile:
         data = json.load(infile)
