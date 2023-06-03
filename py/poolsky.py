@@ -717,7 +717,7 @@ headers={"project_id": project_id}
 
 
 #SOME GLOBALS
-path = r"C:\Users\Hp\Documents\py_projects\hosky"
+
 
 #filename = "hosky_asset_names.json"
 filename2 = r"\hosky_asset_metadata_cleaned.json"
@@ -855,15 +855,19 @@ def pool_assets(pool_id):
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      HELPERS        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 def open_metadata():
-    with open(path+filename2,"r") as f:
-                data = json.load(f)
-                Metadata = data[POLICY_ID] 
+    path = os.path.join(os.environ['GITHUB_WORKSPACE'], 'src', filename2)
+    with open(path, "r") as f:
+        data = json.load(f)
+        Metadata = data[POLICY_ID] 
     return Metadata
+
 def open_metadata_2():
-    with open(path+filename2,"r") as f:
-                data = json.load(f)
-                Metadata_2 = data[POLICY_ID_2] 
+    path = os.path.join(os.environ['GITHUB_WORKSPACE'], 'src', filename2)
+    with open(path, "r") as f:
+        data = json.load(f)
+        Metadata_2 = data[POLICY_ID_2]
     return Metadata_2
+
 def is_matched(Metadata,Pool_Traits):
     for trait in Metadata:
         if trait in Pool_Traits:
