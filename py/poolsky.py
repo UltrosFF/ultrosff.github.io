@@ -741,10 +741,8 @@ def strip_policy(asset):
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     SAFE        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Define the relative path to the src folder
 
-src_path = os.path.join(os.path.dirname(__file__), '..', 'src')
-
 def sync_update(cashg_up, gnomes_up):
-    with open(os.path.join(src_path, "filename2"), "r") as infile:
+    with open(os.path.join(parent_path, 'src', "filename2"), "r") as infile:
         data = json.load(infile)
         data[POLICY_ID].update(cashg_up)
         data[POLICY_ID_2].update(gnomes_up)
@@ -753,7 +751,7 @@ def sync_update(cashg_up, gnomes_up):
 
 def safe_update(data):
     # Define the relative path to the file within the src folder
-    filename2_path = os.path.join(src_path, "filename2")
+    filename2_path = os.path.join(parent_path, 'src', "filename2")
 
     os.remove(filename2_path)
     with open(filename2_path, "x") as f_name: 
