@@ -10,34 +10,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2.6.4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2.5.2
-        with:
-          node-version: 16
+    - name: Set up Node.js
+      uses: actions/setup-node@v2.5.2
+      with:
+        node-version: 14
 
-      - name: Set up Python
-        uses: actions/setup-python@v2.2.1
-        with:
-          python-version: 3.9.13
+    - name: Set up Python
+      uses: actions/setup-python@v2.2.1
+      with:
+        python-version: 3.9.13
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+    - name: Install dependencies
+      run: pip install -r requirements.txt
 
-      - name: Run Python script
-        env:
-          PROJECT_ID: ${{ secrets.project_id }}
-        run: |
-          python py/poolsky.py
+    - name: Run Python script
+      env:
+        PROJECT_ID: ${{ secrets.project_id }}
+      run: |
+        python py/poolsky.py
 
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add src/hosky_asset_metadata_cleaned.json
-          git add src/pool_stats_latest.json
-          git add src/graph.png
-          git commit -m "Update files via GitHub Actions"
-          git push
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add src/hosky_asset_metadata_cleaned.json
+        git add src/pool_stats_latest.json
+        git add src/graph.png
+        git commit -m "Update files via GitHub Actions"
+        git push
