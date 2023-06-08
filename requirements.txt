@@ -1,4 +1,4 @@
 pandas
 seaborn
 matplotlib
-requests==2.29.0
+requests
