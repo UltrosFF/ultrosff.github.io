@@ -796,7 +796,7 @@ delegator_assets = []
 def get_assets(delegator):
     assets_list = []
     filtered_2 = []
-    assets = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/accounts/{delegator}/addresses/assets",params=params,headers=headers).json()
+    assets = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/accounts/{delegator}/addresses/assets",params=params,headers=headers, timeout = 30).json()
     filtered = clean_list(assets)
     assets_list.extend(filtered)
     filtered_2.extend(filtered)
@@ -809,7 +809,7 @@ def get_assets(delegator):
         if has_more_pages(assets) == True:
             #print("delegator has more: ",has_more_pages(assets))
             params["page"] += 1
-            assets = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/accounts/{delegator}/addresses/assets",params=params,headers=headers).json()
+            assets = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/accounts/{delegator}/addresses/assets",params=params,headers=headers, timeout = 30).json()
             filtered = clean_list(assets)
             #print("on this page he had:", len(filtered))
             assets_list.extend(filtered)
@@ -914,7 +914,7 @@ def sync_metadata(asset_name):
    
     try:
         asset = policy+asset_name
-        r = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/assets/{asset}",params=params,headers=headers)
+        r = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/assets/{asset}",params=params,headers=headers, timeout = 30)
         r_json = r.json()
         traits_path = r_json ["onchain_metadata"] ["-----Traits-----"]
     except Exception as e: 
@@ -1021,7 +1021,7 @@ def pool_stats(pool_dict):
     matched_percentage = (matched / cashg)*100
     matched_percentage_2 = (matched_2 / gnome)*100
     
-    print(f"{Pool_Name};\nWeight: {weight} \ncashgrabs matched:{matched}/{cashg}\ngnomes matched: {matched_2}/{gnome} \ncgs with shittis: {cgs_with_shittis},and shittis: {shitti} \nspecial_gnomes: {gnome_special}")
+    #print(f"{Pool_Name};\nWeight: {weight} \ncashgrabs matched:{matched}/{cashg}\ngnomes matched: {matched_2}/{gnome} \ncgs with shittis: {cgs_with_shittis},and shittis: {shitti} \nspecial_gnomes: {gnome_special}")
     sequence = [{"pool": Pool_Name,"weight raw": weight, "cashg's": cashg,"cg matched": matched,"cg matched%": matched_percentage, "gnomeskies": gnome,"gn matched": matched_2, "gn matched%": matched_percentage_2, "special gnomes": gnome_special, "shittis with cgs": cgs_with_shittis,"shittis": shitti}]
     return sequence
 
