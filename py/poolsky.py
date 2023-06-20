@@ -807,9 +807,9 @@ def pool_assets(pool_id):
     retry_attempts = 0
     retry_delay = 4
     
-    # Stream addresses in batches of 1000
-    for i in range(0, len(addresses), 1000):
-        batch_addresses = addresses[i:i+1000]
+    # Stream addresses in batches of 500
+    for i in range(0, len(addresses), 500):
+        batch_addresses = addresses[i:i+500]
         
         data = {
             "_stake_addresses": batch_addresses
@@ -843,6 +843,8 @@ def pool_assets(pool_id):
                 cgs_with_shittis += cgs_with_shittis_count
                 print(f"We have {cgs_with_shittis} CGs with shittis")
                 cgs_with_shittis_count = 0
+    
+        t.sleep(61)  # Sleep for 61 seconds after each batch
     
     return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
 
