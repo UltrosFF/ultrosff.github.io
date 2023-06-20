@@ -809,7 +809,7 @@ def pool_assets(pool_id):
     requests_cache.install_cache("api_cache", expire_after=3600)  # Cache expires after 1 hour
     
     retry_attempts = 0
-    retry_delay = 60
+    retry_delay = 15
     
     # Stream addresses in batches of 250
     for i in range(0, len(addresses), 250):
@@ -819,7 +819,7 @@ def pool_assets(pool_id):
             "_stake_addresses": batch_addresses
         }
         
-        while retry_attempts < 5:  # Maximum number of retry attempts
+        while retry_attempts < 20:  # Maximum number of retry attempts
             try:
                 response = rq.post(url, headers=headers, json=data, timeout=60)
             
@@ -832,7 +832,7 @@ def pool_assets(pool_id):
                 t.sleep(retry_delay)
                 
                 retry_attempts += 1
-                retry_delay += 60  # Increment retry delay by 60 seconds
+                retry_delay += 15  # Increment retry delay by 60 seconds
             
             except rq.exceptions.RequestException as e:
                 # Handle connection errors or other exceptions
@@ -841,7 +841,7 @@ def pool_assets(pool_id):
                 t.sleep(retry_delay)
                 
                 retry_attempts += 1
-                retry_delay += 60  # Increment retry delay by 60 seconds
+                retry_delay += 15  # Increment retry delay by 60 seconds
         
         else:
             print("Maximum retry attempts reached. Exiting...")
