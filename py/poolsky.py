@@ -803,41 +803,46 @@ def pool_assets(pool_id):
         "accept": "application/json",
         "content-type": "application/json"
     }
-    data = {
-        "_stake_addresses": addresses
-    }
     
     retry_attempts = 0
     retry_delay = 4
     
-    while retry_attempts < 5:  # Maximum number of retry attempts
-        response = rq.post(url, headers=headers, json=data, timeout=60)
+    # Stream addresses in batches of 1000
+    for i in range(0, len(addresses), 1000):
+        batch_addresses = addresses[i:i+1000]
         
-        if response.status_code == 200:
-            print("POST request was successful!")
-            output = response.json()
-            break
+        data = {
+            "_stake_addresses": batch_addresses
+        }
         
-        print(f"Request failed with status code {response.status_code}. Retrying in {retry_delay} seconds...")
-        t.sleep(retry_delay)
+        while retry_attempts < 5:  # Maximum number of retry attempts
+            response = rq.post(url, headers=headers, json=data, timeout=60)
+            
+            if response.status_code == 200:
+                print("POST request was successful!")
+                output = response.json()
+                break
+            
+            print(f"Request failed with status code {response.status_code}. Retrying in {retry_delay} seconds...")
+            t.sleep(retry_delay)
+            
+            retry_attempts += 1
+            retry_delay *= 3  # Exponential backoff
         
-        retry_attempts += 1
-        retry_delay *= 3  # Exponential backoff
+        else:
+            print("Maximum retry attempts reached. Exiting...")
+            return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
         
-    else:
-        print("Maximum retry attempts reached. Exiting...")
-        return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
-    
-    for i in output:
-        assets = [asset["policy_id"] + asset["asset_name"] for asset in i["asset_list"] if asset["policy_id"] in [POLICY_ID, POLICY_ID_2, POLICY_ID_S, POLICY_ID_SPECIAL]]
-        asset_list.extend(assets)
-        shitti_detection = [asset for asset in assets if asset.startswith(POLICY_ID_S)]
-        
-        if shitti_detection:
-            cgs_with_shittis_count = len([cash_grab for cash_grab in assets if cash_grab.startswith(POLICY_ID)])
-            cgs_with_shittis += cgs_with_shittis_count
-            print(f"We have {cgs_with_shittis} CGs with shittis")
-            cgs_with_shittis_count = 0
+        for i in output:
+            assets = [asset["policy_id"] + asset["asset_name"] for asset in i["asset_list"] if asset["policy_id"] in [POLICY_ID, POLICY_ID_2, POLICY_ID_S, POLICY_ID_SPECIAL]]
+            asset_list.extend(assets)
+            shitti_detection = [asset for asset in assets if asset.startswith(POLICY_ID_S)]
+            
+            if shitti_detection:
+                cgs_with_shittis_count = len([cash_grab for cash_grab in assets if cash_grab.startswith(POLICY_ID)])
+                cgs_with_shittis += cgs_with_shittis_count
+                print(f"We have {cgs_with_shittis} CGs with shittis")
+                cgs_with_shittis_count = 0
     
     return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
 
