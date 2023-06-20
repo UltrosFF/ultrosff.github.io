@@ -10,6 +10,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+import requests_cache
 #import blockfrost
 #POLICIES
 
@@ -804,30 +805,43 @@ def pool_assets(pool_id):
         "content-type": "application/json"
     }
     
-    retry_attempts = 0
-    retry_delay = 4
+    # Enable requests caching
+    requests_cache.install_cache("api_cache", expire_after=3600)  # Cache expires after 1 hour
     
-    # Stream addresses in batches of 500
-    for i in range(0, len(addresses), 500):
-        batch_addresses = addresses[i:i+500]
+    retry_attempts = 0
+    retry_delay = 60
+    
+    # Stream addresses in batches of 250
+    for i in range(0, len(addresses), 250):
+        batch_addresses = addresses[i:i+250]
         
         data = {
             "_stake_addresses": batch_addresses
         }
         
         while retry_attempts < 5:  # Maximum number of retry attempts
-            response = rq.post(url, headers=headers, json=data, timeout=60)
+            try:
+                response = rq.post(url, headers=headers, json=data, timeout=60)
             
-            if response.status_code == 200:
-                print("POST request was successful!")
-                output = response.json()
-                break
+                if response.status_code == 200:
+                    print("POST request was successful!")
+                    output = response.json()
+                    break
+                
+                print(f"Request failed with status code {response.status_code}. Retrying in {retry_delay} seconds...")
+                t.sleep(retry_delay)
+                
+                retry_attempts += 1
+                retry_delay += 60  # Increment retry delay by 60 seconds
             
-            print(f"Request failed with status code {response.status_code}. Retrying in {retry_delay} seconds...")
-            t.sleep(retry_delay)
-            
-            retry_attempts += 1
-            retry_delay *= 3  # Exponential backoff
+            except rq.exceptions.RequestException as e:
+                # Handle connection errors or other exceptions
+                print(f"Request failed with exception: {e}")
+                print(f"Retrying in {retry_delay} seconds...")
+                t.sleep(retry_delay)
+                
+                retry_attempts += 1
+                retry_delay += 60  # Increment retry delay by 60 seconds
         
         else:
             print("Maximum retry attempts reached. Exiting...")
@@ -844,7 +858,7 @@ def pool_assets(pool_id):
                 print(f"We have {cgs_with_shittis} CGs with shittis")
                 cgs_with_shittis_count = 0
     
-        t.sleep(61)  # Sleep for 61 seconds after each batch
+        t.sleep(30)  # Sleep for 30 seconds after each batch
     
     return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
 
