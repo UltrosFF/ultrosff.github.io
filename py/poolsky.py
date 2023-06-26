@@ -812,8 +812,8 @@ def pool_assets(pool_id):
     retry_delay = 15
     
     # Stream addresses in batches of 250
-    for i in range(0, len(addresses), 250):
-        batch_addresses = addresses[i:i+250]
+    for i in range(0, len(addresses), 1000):
+        batch_addresses = addresses[i:i+1000]
         
         data = {
             "_stake_addresses": batch_addresses
