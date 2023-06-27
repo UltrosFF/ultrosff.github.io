@@ -809,7 +809,7 @@ def pool_assets(pool_id):
     requests_cache.install_cache("api_cache", expire_after=3600)  # Cache expires after 1 hour
     
     retry_attempts = 0
-    retry_delay = 15
+    retry_delay = 1
     
     # Stream addresses in batches of 250
     for i in range(0, len(addresses), 500):
@@ -858,7 +858,6 @@ def pool_assets(pool_id):
                 print(f"We have {cgs_with_shittis} CGs with shittis")
                 cgs_with_shittis_count = 0
     
-        t.sleep(30)  # Sleep for 30 seconds after each batch
     
     return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
 
