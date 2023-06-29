@@ -10,7 +10,6 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-import requests_cache
 #import blockfrost
 #POLICIES
 
@@ -792,74 +791,63 @@ def clean_list(some_list):
                 cleaned_list.append(value)
     return cleaned_list
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     ANALYZE WALLETS FOR NFTS        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-def pool_assets(pool_id):
-    pool_id = pool_id
-    asset_list = []
+delegator_assets = []
+
+def get_assets(delegator):
+    assets_list = []
+    filtered_2 = []
+    assets = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/accounts/{delegator}/addresses/assets",params=params,headers=headers, timeout = 30).json()
+    filtered = clean_list(assets)
+    assets_list.extend(filtered)
+    filtered_2.extend(filtered)
+    #print("total nfts of ^: ",len(assets))
+    #print("delegator hosky nfts: ",len(filtered))
     cgs_with_shittis = 0
-    cgs_with_shittis_count = 0
-    addresses = get_delegators(pool_id)
-    
-    url = "https://api.koios.rest/api/v0/account_assets"
-    headers = {
-        "accept": "application/json",
-        "content-type": "application/json"
-    }
-    
-    # Enable requests caching
-    requests_cache.install_cache("api_cache", expire_after=3600)  # Cache expires after 1 hour
-    
-    retry_attempts = 0
-    retry_delay = 1
-    
-    # Stream addresses in batches of 250
-    for i in range(0, len(addresses), 500):
-        batch_addresses = addresses[i:i+500]
+    shitti = False
+    while True:
         
-        data = {
-            "_stake_addresses": batch_addresses
-        }
+        if has_more_pages(assets) == True:
+            #print("delegator has more: ",has_more_pages(assets))
+            params["page"] += 1
+            assets = rq.get(f"https://cardano-mainnet.blockfrost.io/api/v0/accounts/{delegator}/addresses/assets",params=params,headers=headers, timeout = 30).json()
+            filtered = clean_list(assets)
+            #print("on this page he had:", len(filtered))
+            assets_list.extend(filtered)
+            filtered_2.extend(filtered)
         
-        while retry_attempts < 20:  # Maximum number of retry attempts
-            try:
-                response = rq.post(url, headers=headers, json=data, timeout=60)
-            
-                if response.status_code == 200:
-                    print("POST request was successful!")
-                    output = response.json()
+        else: 
+            for asset in filtered_2:
+                if asset.startswith(POLICY_ID_S):
+                    shitti = True
                     break
-                
-                print(f"Request failed with status code {response.status_code}. Retrying in {retry_delay} seconds...")
-                t.sleep(retry_delay)
-                
-                retry_attempts += 1
-                retry_delay += 15  # Increment retry delay by 60 seconds
-            
-            except rq.exceptions.RequestException as e:
-                # Handle connection errors or other exceptions
-                print(f"Request failed with exception: {e}")
-                print(f"Retrying in {retry_delay} seconds...")
-                t.sleep(retry_delay)
-                
-                retry_attempts += 1
-                retry_delay += 15  # Increment retry delay by 60 seconds
-        
-        else:
-            print("Maximum retry attempts reached. Exiting...")
-            return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
-        
-        for i in output:
-            assets = [asset["policy_id"] + asset["asset_name"] for asset in i["asset_list"] if asset["policy_id"] in [POLICY_ID, POLICY_ID_2, POLICY_ID_S, POLICY_ID_SPECIAL]]
-            asset_list.extend(assets)
-            shitti_detection = [asset for asset in assets if asset.startswith(POLICY_ID_S)]
-            
-            if shitti_detection:
-                cgs_with_shittis_count = len([cash_grab for cash_grab in assets if cash_grab.startswith(POLICY_ID)])
-                cgs_with_shittis += cgs_with_shittis_count
-                print(f"We have {cgs_with_shittis} CGs with shittis")
-                cgs_with_shittis_count = 0
+            if shitti == True:
+                for asset in filtered_2:
+                    if asset.startswith(POLICY_ID):
+                        
+                        cgs_with_shittis += 1
+            break
+    #print("delegator had shitti: ",shitti,"add cg with shitti: ", cgs_with_shittis)
+    params["page"] = 1
+    return {"assets_list":assets_list,"cgs_with_shittis":cgs_with_shittis}
+
+def pool_assets(pool_id):
     
+    delegators = get_delegators(pool_id)
+    #delegators = ["stake1uxmfu2tkg9wk0utmla8ns78udpy4d7dhc8gg5g3gt4a05tgfqm76y"]
     
-    return {"pool nfts": asset_list, "cgs with shittis": cgs_with_shittis}
+    cgs_with_shittis = 0
+    
+    print("Total Delegators",len(delegators))
+    pool_assets = []
+    for delegator in delegators:
+        #print("\ndelegator: "+delegator)
+        assets_dict = get_assets(delegator)
+        assets = assets_dict["assets_list"]
+        cgs_with_shittis += assets_dict["cgs_with_shittis"]
+        #print("cgs_with_shittis: ",cgs_with_shittis)        
+        pool_assets.extend(assets)
+        #print("new total is: ", len(pool_assets))
+    return {"pool nfts":pool_assets,"cgs with shittis": cgs_with_shittis}
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      HELPERS        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1074,4 +1062,3 @@ def plot_pools():
 
 plot_pools()
 #print(get_delegators(SEA["id"]))
-
