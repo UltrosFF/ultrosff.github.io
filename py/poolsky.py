@@ -185,8 +185,8 @@ LIDO = {'id': 'b5a1a820cc3783a4e637bce79d1cc2774b241c08251e45c5d1f8f3f6',
  'Visor Heart',
  'Goggles'],"gnome_traits": ['Poolception','Lobster']}
 
-FIKA = {'id': 'f423b19715cca49029ed13ff02a110b63de7d96ad7a0536dc5887a41',
- 'pool': 'FIKA',
+BAIDU = {'id': 'c1f5cfd4330339e90ba83a64d269a81cf415d7adab36403e27b910f7',
+ 'pool': 'BAIDU',
  'traits': 
 ['Tiger Fur',
  'Gold Tiger',
@@ -674,8 +674,8 @@ PRIDE = {'id': '93ca5c2f1eb63054f7c768a807408a43e65d7c68fe56e330db20af51',
  'Back To The Future',
  'Broken Pilot Glasses'],"gnome_traits": ['Classic']}
 
-NANI = {"id": "d0deba25ce9e6ff59af7f39305fce373241156616cdf0a49b1d49e48",
-       "pool": "NANI",
+ASPEN = {"id": "05b8a25ec4f41956a6496555c233bcbe6fc06596553ae2d14df73e20",
+       "pool": "ASPEN",
        'traits':
         ['X-Ray',
  'Ghost',
@@ -1026,7 +1026,7 @@ def pool_stats(pool_dict):
     return sequence
 
 
-pools = [RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, HERO, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, FIKA, LIDO, NANI, STOIC] 
+pools = [RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, HERO, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
 
 
 
