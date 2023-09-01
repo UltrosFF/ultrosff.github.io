@@ -443,8 +443,8 @@ WOOF = {'id': 'c22942e1b855136643d1e6e5a75266fb891d87727a8cbf06acd17208',
  'Thug Life',
  'Upside Down Right Way Up'],"gnome_traits": ['Idiot']}
 
-HERO = {'id': '259d8027c33ee454ec2319531269495c07fefcdb52a513c5090f59ed',
- 'pool': 'HERO',
+DDOS = {'id': 'a59e2c8422ed40242742f3b6e8219fa0c454eaa7288d71981d3b65a9',
+ 'pool': 'DDOS',
  'traits': 
 ['Blue Dog',
  'Skull',
@@ -1026,7 +1026,7 @@ def pool_stats(pool_dict):
     return sequence
 
 
-pools = [RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, HERO, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
+pools = [RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
 
 
 
