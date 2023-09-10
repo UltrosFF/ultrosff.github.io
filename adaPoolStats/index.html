@@ -67,17 +67,9 @@
   }
 </style>
 
-<div class="button-wrapper">
-  <a class="button" href="findMyHosky/index.html">Find My Hosky</a>
-</div>
-
-<div class="button-wrapper">
-  <a class="button" href="adaPoolStats/index.html">Ada Pool Stats</a>
-</div>
-
 <h1>Poolsky A Hoksy Community Tool</h1>
     
-<p>Updates usually daily</p>
+<p>Ada Stats Updates via Koios API</p>
 
 <p>Stake to SEA Idiots!</p>
 
@@ -128,34 +120,10 @@
 </div>
 </div>    
 
-<img src="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/graph.png" alt="pool_stats_graph" border="0">
- <div class="container" style="text-align: center;">
-  <table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">Pool</th>
-        <th scope="col">Weight</th>
-        <th scope="col">Cashgrabs</th>
-        <th scope="col">Matched %</th>
-        <th scope="col">Gnomeskies</th>
-        <th scope="col">Shittis</th>
-        <th scope="col">Cashgrabs with Shittis</th>
-        <th scope="col">Special Gnomes</th>
-      </tr>
-    </thead>
-    <tbody id="contents">
-    </tbody>
-  </table>
-</div>
-
-
 </body>
 <py-script>
 from pyodide.http import pyfetch
 import asyncio
-import time as t
-import js
-from js import document
 
 WRFGS = {"pool_tag": "WRFGS","pool_id_bech_32":"pool1dmnyhw9uthknzcq4q6pwdc4vtfxz5zzrvd9eg432u60lzl959tw"}
 SEA = {"pool_tag": "SEA","pool_id_bech_32":"pool17xh922cr9skc0fqk7sr8at6xx6eluh5qyv9p7ca2x0mtc3st0mz"}
@@ -180,76 +148,26 @@ RARE = {"pool_tag": "RARE","pool_id_bech_32":"pool1mscll7kd2y9c56kv7thv7kv99wjvr
 STOIC = {"pool_tag": "STOIC","pool_id_bech_32":"pool1pxw4z2m0lmw422hr32dwyy3uz9436g8p7qdmg2sl2w0m5pyk3yn"}
 SCIFI = {"pool_tag": "SCIFI","pool_id_bech_32":"pool1lncn6a8xy3dm203m80hr4d4qm53h22a48e2s703z9qr9c20akka"}
 
-response_2 = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/pool_stats_latest.json",method="GET")
-output_2 = await response_2.json()
-catch = output_2
 
-class Pool:
-    def __init__(self, pool_dict):
-        self.name = pool_dict["pool"]
-        self.weight = int(pool_dict["weight raw"])
-        self.cashgrabs = pool_dict["cashg's"]
-        self.cashgrabs_matched = int(pool_dict['cg matched%'])
-        self.gnomeskies = pool_dict["gnomeskies"]
-        self.shittis = pool_dict["shittis"]
-        self.shittis_with_cashgrabs= pool_dict["shittis with cgs"]
-        self.special_gnomes = pool_dict["special gnomes"]
-    
-    def __str__(self):
-        return f"{self.name}; Weight : {self.weight} Cashgrabs : {self.cashgrabs} matched % : {self.cashgrabs_matched} Gnomeskies : {self.gnomeskies} Shittis : {self.shittis} Cashgrabs with Shittis : {self.shittis_with_cashgrabs} Special Gnomes : {self.special_gnomes}"
-    
-    def create_html_element(self):
-        tr_element = document.createElement('tr')
+pools = [WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
 
-        pool_element = document.createElement('td')
-        weight_element = document.createElement('td')
-        cashgrabs_element = document.createElement('td')
-        cashgrabs_matched_element = document.createElement('td')
-        gnomeskies_element = document.createElement('td')
-        shittis_element = document.createElement('td')
-        shittis_with_cashgrabs_element = document.createElement('td')
-        special_gnomes_element = document.createElement('td')
+stake_dict = {}
 
-        pool_element.innerText = self.name
-        weight_element.innerText = self.weight
-        cashgrabs_element.innerText = self.cashgrabs
-        cashgrabs_matched_element.innerText = self.cashgrabs_matched
-        gnomeskies_element.innerText = self.gnomeskies
-        shittis_element.innerText = self.shittis
-        shittis_with_cashgrabs_element.innerText = self.shittis_with_cashgrabs
-        special_gnomes_element.innerText = self.special_gnomes
-        
-        
-        tr_element.append(pool_element)
-        tr_element.append(weight_element)
-        tr_element.append(cashgrabs_element)
-        tr_element.append(cashgrabs_matched_element)
-        tr_element.append(gnomeskies_element)
-        tr_element.append(shittis_element)
-        tr_element.append(shittis_with_cashgrabs_element)
-        tr_element.append(special_gnomes_element)
+for pool in pools:
+    bech_32 = pool["pool_id_bech_32"]
+    response = await pyfetch(url="https://api.koios.rest/api/v0/pool_stake_snapshot?_pool_bech32="+bech_32,method="GET")
+    output = await response.json()
+    pool_stake = int(int(output[-1]['pool_stake'])//1000000)
+    pool_tag = pool["pool_tag"]
+    stake_dict[pool_tag] = pool_stake
 
-        return tr_element
+value_getter = list(stake_dict.values())
+value_getter.sort()
+for stake in value_getter:
+    for key,value in stake_dict.items():
+        if stake == value:
+            print(key,str(stake/1000000) +" Mil. Ada")
 
-def create_pool_stats():
-    pool_objects = []
-    for entry in catch:
-        pool_object = Pool(entry)
-        pool_objects.append(pool_object)
-    return pool_objects
-
-def populate_table(pool_objects):
-    element = document.getElementById("contents")
-    # Sort pool objects by weight in descending order
-    pool_objects = sorted(pool_objects, key=lambda pool_obj: pool_obj.weight, reverse=False)
-    for pool_obj in pool_objects:
-        element.append(pool_obj.create_html_element())
-
-def main():
-    pool_statistics = create_pool_stats()
-    populate_table(pool_statistics)
-    
-main()
 
 </py-script>
 </html>
