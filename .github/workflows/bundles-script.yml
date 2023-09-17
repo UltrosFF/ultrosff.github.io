@@ -1,0 +1,42 @@
+name: Run Bundles Script
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Schedule to run every 5 minutes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.5.2
+        with:
+          node-version: 16
+
+      - name: Set up Python
+        uses: actions/setup-python@v2.2.1
+        with:
+          python-version: 3.9.13
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Python script
+        run: |
+          python py/bundles_script.py > output.txt  # Redirect script output to a file
+          tail -n 3 output.txt > output.json  # Extract the last 3 lines to a JSON file
+          mv output.json src/output.json      # Move the JSON file to the src directory
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/output.json
+          git commit -m "Update Bundles via GitHub Actions"
+          git push
