@@ -1,5 +1,6 @@
 import requests
 import json
+from json import JSONEncoder
 
 page = 1
 base_url = "https://server.jpgstoreapis.com/policy/a5bb0e5bb275a573d744a021f9b3bff73595468e002755b447e01559/listings"
@@ -9,15 +10,25 @@ results = []
 data = requests.get(response_page).json()
 
 class Offer:
-    def __init__(self,offer,ratio):
+    def __init__(self, offer, ratio):
         self.asset = offer["asset_id"]
         self.count = len(offer["bundled_assets"])
         self.price = int(int(offer["price_lovelace"]) / 1000000)
-        self.ratio = round(ratio,2)
-        self.link = jpg_url+self.asset
-        
-    def __repr__(self):
-        return repr((self.asset, self.count, self.price, self.link))
+        self.ratio = round(ratio, 2)
+        self.link = jpg_url + self.asset
+
+    def to_dict(self):
+        return {
+            "asset": self.asset,
+            "count": self.count,
+            "price_total": self.price,
+            "price_per": self.ratio,
+            "link": self.link
+        }
+
+class OfferEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
 
 while True:
     response_page = f"{base_url}?page={page}"
@@ -41,9 +52,9 @@ while True:
 
 sorted_results = sorted(results, key=lambda offer: offer.ratio)
 
-# Convert the results to a dictionary
+# Convert the results to a list of dictionaries using the custom OfferEncoder
 output_data = {"content": sorted_results}
 
 # Save the output data to output.json
 with open("output.json", "w") as outfile:
-    json.dump(output_data, outfile, indent=4)
+    json.dump(output_data, outfile, indent=4, cls=OfferEncoder)
