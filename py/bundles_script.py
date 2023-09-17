@@ -44,11 +44,8 @@ while True:
 
 sorted_results = sorted(results, key=lambda offer: offer.ratio)
 
-# Extract the last 3 items from sorted_results
-last_three_results = sorted_results[-3:]
-
-# Convert the last three results to dictionaries
-output_data = [result.to_dict() for result in last_three_results]
+# Convert the results to a dictionary
+output_data = {"content": sorted_results}
 
 # Save the output data to output.json
 with open("output.json", "w") as outfile:
