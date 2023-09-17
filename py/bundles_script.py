@@ -16,8 +16,8 @@ class Offer:
         self.ratio = round(ratio,2)
         self.link = jpg_url+self.asset
         
-        def __repr__(self):
-            return repr((self.asset, self.count, self.price, self.link))
+    def __repr__(self):
+        return repr((self.asset, self.count, self.price, self.link))
 
 while True:
     response_page = f"{base_url}?page={page}"
