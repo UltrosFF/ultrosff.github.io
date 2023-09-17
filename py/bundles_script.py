@@ -9,21 +9,15 @@ results = []
 data = requests.get(response_page).json()
 
 class Offer:
-    def __init__(self, offer, ratio):
+    def __init__(self,offer,ratio):
         self.asset = offer["asset_id"]
         self.count = len(offer["bundled_assets"])
         self.price = int(int(offer["price_lovelace"]) / 1000000)
-        self.ratio = round(ratio, 2)
-        self.link = jpg_url + self.asset
-
-    def to_dict(self):
-        return {
-            "asset": self.asset,
-            "count": self.count,
-            "price_total": self.price,
-            "price_per": self.ratio,
-            "link": self.link
-        }
+        self.ratio = round(ratio,2)
+        self.link = jpg_url+self.asset
+        
+        def __repr__(self):
+            return repr((self.asset, self.count, self.price, self.link))
 
 while True:
     response_page = f"{base_url}?page={page}"
