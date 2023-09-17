@@ -31,13 +31,16 @@ while True:
     
     print(f"current page: {page}")
     for offer in data:
-        if offer["listing_type"] == "BUNDLE":
-            asset = offer["asset_id"]
-            asset_count = len(offer["bundled_assets"])
-            price = int(int(offer["price_lovelace"]) / 1000000)
-            ratio = price / asset_count
-            test_class = Offer(offer, ratio)
-            results.append(test_class)
+        if "listing_type" in offer:
+            if offer["listing_type"] == "BUNDLE":
+                
+                asset = offer["asset_id"]
+                asset_count = len(offer["bundled_assets"])
+                price = int(int(offer["price_lovelace"]) / 1000000)
+                ratio = price / asset_count
+                test_class = Offer(offer, ratio)
+                results.append(test_class)
+                
     if len(data) < 75:
         break
     page += 1
