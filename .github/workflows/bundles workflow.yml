@@ -1,4 +1,4 @@
-name: Run Python Script
+name: Run Bundles Script
 
 on:
   schedule:
@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Python script
         run: |
-          python py/bundles-script.py > output.txt  # Redirect script output to a file
+          python py/bundles_script.py > output.txt  # Redirect script output to a file
           tail -n 3 output.txt > output.json  # Extract the last 3 lines to a JSON file
           mv output.json src/output.json      # Move the JSON file to the src directory
 
