@@ -56,5 +56,7 @@ sorted_results = sorted(results, key=lambda offer: offer.ratio)
 output_data = {"content": sorted_results}
 
 # Save the output data to output.json
-with open("output.json", "w") as outfile:
+output_file_path = os.path.join("src", "outfile.json")
+
+with open(output_file_path, "w") as outfile:
     json.dump(output_data, outfile, indent=4, cls=OfferEncoder)
