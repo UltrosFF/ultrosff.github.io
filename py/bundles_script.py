@@ -1,6 +1,7 @@
 import requests
 import json
 from json import JSONEncoder
+import os
 
 page = 1
 base_url = "https://server.jpgstoreapis.com/policy/a5bb0e5bb275a573d744a021f9b3bff73595468e002755b447e01559/listings"
