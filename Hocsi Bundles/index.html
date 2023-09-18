@@ -46,31 +46,40 @@
     justify-content: center;
   }
 
-  .button-wrapper {
-    width: 100%;
-    background-color: #333;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-  }
+.button-wrapper {
+  width: 100%;
+  background-color: #333;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
 
-  .button {
-    background-color: #f2f2f2;
-    border: none;
-    color: #333;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
+.button {
+  background-color: #f2f2f2;
+  border: none;
+  color: #333;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px; /* Add some spacing between buttons */
+}
+
   }
 </style>
 
+<div class="button-wrapper">
+  <a class="button" href="findMyHosky/index.html">Find My Hosky</a>
+  <a class="button" href="adaPoolStats/index.html">Ada Pool Stats</a>
+  <a class="button" href="https://ultrosff.github.io/">Nft Pool Stats</a>
+</div>
+
+
 <h1>Poolsky A Hoksy Community Tool</h1>
     
-<p>Bundles on JPG sorted by lowest per Asset, updates approx. every 30 mins</p>
-<p>Updates approx. every 30 mins</p>
+<p>Updates usually daily</p>
 
 <p>Stake to SEA Idiots!</p>
 
@@ -115,23 +124,96 @@
  }
 }
 </style>
+
 <div class="vertically">
 <div class="inner">
 <img src="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/pistachiosky_1.png" alt="Pistachiosky">
 </div>
 </div>    
 
+<div class="container" style="text-align: center;">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Asset</th>
+        <th scope="col">Count</th>
+        <th scope="col">Price</th>
+        <th scope="col">Ratio</th>
+        <th scope="col">Link</th>
+      </tr>
+    </thead>
+    <tbody id="contents">
+    </tbody>
+  </table>
+</div>
+
 </body>
 <py-script>
 from pyodide.http import pyfetch
 import asyncio
+from js import document
 
 response = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/outfile.json",method="GET")
 output = await response.json()
 
-for dictionary in output["content"]:
-    print(dictionary)
+class Offer:
+    def __init__(self,offer):
+        self.asset = offer["asset"]
+        self.count = offer["count"]
+        self.price = offer["price"]
+        self.ratio = offer["ratio"]
+        self.link = offer["link"]
+        
+    def __repr__(self):
+        return repr((self.asset, self.count,self.ratio, self.price, self.link))
+    
+    def create_html_element(self):
+        tr_element = document.createElement('tr')
+    
+        asset_element = document.createElement('td')
+        count_element = document.createElement('td')
+        price_element = document.createElement('td')
+        ratio_element = document.createElement('td')
+        link_element = document.createElement('td')
 
+        asset_element.innerText = self.asset
+        count_element.innerText = self.count
+        price_element.innerText = self.price
+        ratio_element.innerText = self.ratio
+
+        # Create a hyperlink for the 'link' attribute
+        link_a_element = document.createElement('a')
+        link_a_element.href = self.link  # Set the 'href' to the 'link' attribute
+        link_a_element.innerText = self.link  # Use the link text as the URL
+        link_element.appendChild(link_a_element)  # Append the hyperlink to the 'td'
+
+        tr_element.appendChild(asset_element)
+        tr_element.appendChild(count_element)
+        tr_element.appendChild(price_element)
+        tr_element.appendChild(ratio_element)
+        tr_element.appendChild(link_element)
+
+        return tr_element
+
+def create_offer_stats():
+    offer_objects = []
+    for item in output["content"]:
+        offer_object = Offer(item)
+        offer_objects.append(offer_object)
+    return offer_objects
+
+def populate_table(offer_objects):
+    element = document.getElementById("contents")
+    # Sort offer objects by ratio in descending order
+    offer_objects = sorted(offer_objects, key=lambda offer_obj: offer_obj.ratio, reverse=False)
+    for offer_obj in offer_objects:
+        element.append(offer_obj.create_html_element())
+
+def main():
+    bundle_statistics = create_offer_stats()
+    populate_table(bundle_statistics)
+
+main()
 
 </py-script>
 </html>
