@@ -2,7 +2,7 @@ name: Run Bundles Script
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Schedule to run every 15 minutes
+    - cron: '*/30 * * * *' # Schedule to run every 30 minutes
   workflow_dispatch: # Manual trigger
 
 jobs:
@@ -30,6 +30,9 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Delete old outfile.json
+        run: rm src/outfile.json || true
 
       - name: Run Python script
         run: |
