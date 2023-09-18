@@ -125,7 +125,7 @@
 from pyodide.http import pyfetch
 import asyncio
 
-response = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/output.json",method="GET")
+response = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/outfile.json",method="GET")
 output = await response.json()
 
 for dictionary in output["content"]:
