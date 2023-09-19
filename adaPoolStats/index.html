@@ -46,30 +46,40 @@
     justify-content: center;
   }
 
-  .button-wrapper {
-    width: 100%;
-    background-color: #333;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-  }
+.button-wrapper {
+  width: 100%;
+  background-color: #333;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
 
-  .button {
-    background-color: #f2f2f2;
-    border: none;
-    color: #333;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
+.button {
+  background-color: #f2f2f2;
+  border: none;
+  color: #333;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px; /* Add some spacing between buttons */
+}
+
   }
 </style>
 
+<div class="button-wrapper">
+  <a class="button" href="findMyHosky/index.html">Find My Hosky</a>
+  <a class="button" href="https://ultrosff.github.io/">Nft Pool Stats</a>
+  <a class="button" href="Hocsi%20Bundles/index.html">JPG Bundles Sorted</a>
+</div>
+
+
 <h1>Poolsky A Hoksy Community Tool</h1>
     
-<p>Ada Stats Updates via Koios API</p>
+<p>Data pulled via Koios Api</p>
 
 <p>Stake to SEA Idiots!</p>
 
@@ -120,6 +130,20 @@
 </div>
 </div>    
 
+
+ <div class="container" style="text-align: center;">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Pool</th>
+        <th scope="col">Stake</th>
+      </tr>
+    </thead>
+    <tbody id="contents">
+    </tbody>
+  </table>
+</div> 
+
 </body>
 <py-script>
 from pyodide.http import pyfetch
@@ -160,13 +184,59 @@ for pool in pools:
     pool_stake = int(int(output[-1]['pool_stake'])//1000000)
     pool_tag = pool["pool_tag"]
     stake_dict[pool_tag] = pool_stake
+    
+pool_dict_list = []
 
 value_getter = list(stake_dict.values())
 value_getter.sort()
 for stake in value_getter:
     for key,value in stake_dict.items():
         if stake == value:
-            print(key,str(stake/1000000) +" Mil. Ada")
+            pool_dict_list.append({key: str(round(stake/1000000,2)) +" Mil. Ada"})
+
+
+
+
+
+class Pool:
+    def __init__(self, pool_dict):
+        self.pool = list(pool_dict.keys())[0]
+        self.stake = pool_dict[self.pool]
+        
+    def __repr__(self):
+        return repr((self.pool, self.stake))
+    
+    def create_html_element(self):
+        tr_element = document.createElement('tr')
+
+        pool_element = document.createElement('td')
+        stake_element = document.createElement('td')
+
+        pool_element.innerText = self.pool
+        stake_element.innerText = self.stake
+        
+        tr_element.append(pool_element)
+        tr_element.append(stake_element)
+
+        return tr_element
+
+def create_pool_ada_stats():
+    pool_objects = []
+    for item in pool_dict_list:
+        pool_object = Pool(item)
+        pool_objects.append(pool_object)
+    return pool_objects
+
+def populate_table(pool_objects):
+    element = document.getElementById("contents")
+    for pool_obj in pool_objects:
+        element.append(pool_obj.create_html_element())
+
+def main():
+    pool_ada_statistics = create_pool_ada_stats()
+    populate_table(pool_ada_statistics)
+    
+main()
 
 
 </py-script>
