@@ -298,7 +298,7 @@ VEGAS = {'id': '6a4a39566f5c45f0f6de34ef5e674b892e517ddeebd4eafcfd8583ef',
  'Meh',
  'Green Laser',
  'Heads-Up Display',
- 'Late Night Glasses'],"gnome_traits": ['English']}
+ 'Late Night Glasses'],"gnome_traits": ['Vegas','English']}
 
 QCPOL = {'id': 'c2b8bff5160dd75149f2cae0955698550e8cf0d390025b26a9508a3e',
  'pool': 'QCPOL',
