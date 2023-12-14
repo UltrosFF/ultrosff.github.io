@@ -1,4 +1,4 @@
-name: Run Bundles Script
+name: Run Ada Pools Script
 
 on:
   schedule:
