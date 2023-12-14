@@ -177,26 +177,9 @@ pools = [WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA,
 
 stake_dict = {}
 
-for pool in pools:
-    bech_32 = pool["pool_id_bech_32"]
-    response = await pyfetch(url="https://api.koios.rest/api/v0/pool_stake_snapshot?_pool_bech32="+bech_32,method="GET")
-    output = await response.json()
-    pool_stake = int(int(output[-1]['pool_stake'])//1000000)
-    pool_tag = pool["pool_tag"]
-    stake_dict[pool_tag] = pool_stake
-    
-pool_dict_list = []
-
-value_getter = list(stake_dict.values())
-value_getter.sort()
-for stake in value_getter:
-    for key,value in stake_dict.items():
-        if stake == value:
-            pool_dict_list.append({key: str(round(stake/1000000,2)) +" Mil. Ada"})
-
-
-
-
+response = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/outfile_ada_pools.json",method="GET")
+output = await response.json()  
+pool_dict_list = output["ada_pools"]
 
 class Pool:
     def __init__(self, pool_dict):
