@@ -54,7 +54,7 @@ ada_pools = {"ada_pools":pool_dict_list}
 
 output_file_path = os.path.join("src", "outfile_ada_pools.json")
 
-Path("src/outfile_ada_pools.json").unlink()
+#Path("src/outfile_ada_pools.json").unlink()
 
-with open(output_file_path, "x") as outfile_ada_pools:
+with open(output_file_path, "w") as outfile_ada_pools:
     json.dump(ada_pools, outfile_ada_pools)
