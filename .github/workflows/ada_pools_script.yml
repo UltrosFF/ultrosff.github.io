@@ -28,9 +28,6 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Delete old outfile.json
-        run: rm src/outfile_ada_pools.json || true
-
       - name: Run Python script
         run: |
           python py/ada_pools_script.py
