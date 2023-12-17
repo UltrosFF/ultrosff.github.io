@@ -33,7 +33,6 @@ jobs:
 
       - name: Run Python script
         run: |
-          cd $GITHUB_WORKSPACE  # Set the working directory to the root of the repository
           python py/ada_pools_script.py
 
       - name: Commit and push changes
