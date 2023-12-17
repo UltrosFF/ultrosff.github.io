@@ -55,5 +55,5 @@ output_file_path = os.path.join("src", "outfile_ada_pools.json")
 
 os.remove(output_file_path)
 
-with open(output_file_path, "w") as outfile_ada_pools:
+with open(output_file_path, "x") as outfile_ada_pools:
     json.dump(ada_pools, outfile_ada_pools)
