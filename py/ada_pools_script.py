@@ -1,6 +1,7 @@
 import requests as rq
 import json
 import os
+from pathlib import Path
 
 WRFGS = {"pool_tag": "WRFGS","pool_id_bech_32":"pool1dmnyhw9uthknzcq4q6pwdc4vtfxz5zzrvd9eg432u60lzl959tw"}
 SEA = {"pool_tag": "SEA","pool_id_bech_32":"pool17xh922cr9skc0fqk7sr8at6xx6eluh5qyv9p7ca2x0mtc3st0mz"}
@@ -52,6 +53,8 @@ print(pool_dict_list)
 ada_pools = {"ada_pools":pool_dict_list}
 
 output_file_path = os.path.join("src", "outfile_ada_pools.json")
+
+#Path("src/outfile_ada_pools.json").unlink()
 
 with open(output_file_path, "w") as outfile_ada_pools:
     json.dump(ada_pools, outfile_ada_pools)
