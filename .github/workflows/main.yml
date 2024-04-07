@@ -3,6 +3,7 @@ name: Python CI
 on:
   schedule:
     - cron: "0 13 * * *"
+  workflow_dispatch: # Manual trigger
 
 jobs:
   build:
@@ -11,6 +12,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Pull latest changes
+        run: git pull
 
       - name: Set up Node.js
         uses: actions/setup-node@v2.5.2
