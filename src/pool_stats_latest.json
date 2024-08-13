@@ -1,10 +1,10 @@
 [
     {
         "pool": "RARE",
-        "weight raw": 25478.629999999997,
-        "cashg's": 12718,
-        "cg matched": 5576,
-        "cg matched%": 43.84337159930807,
+        "weight raw": 25828.629999999997,
+        "cashg's": 13067,
+        "cg matched": 5577,
+        "cg matched%": 42.68003367261039,
         "gnomeskies": 42,
         "gn matched": 0,
         "gn matched%": 0.0,
@@ -14,16 +14,16 @@
     },
     {
         "pool": "SALT",
-        "weight raw": 28382.129999999997,
-        "cashg's": 12545,
+        "weight raw": 28887.44,
+        "cashg's": 12844,
         "cg matched": 9627,
-        "cg matched%": 76.73973694699083,
+        "cg matched%": 74.95328558081594,
         "gnomeskies": 29,
         "gn matched": 20,
         "gn matched%": 68.96551724137932,
         "special gnomes": 8,
-        "shittis with cgs": 7877,
-        "shittis": 2
+        "shittis with cgs": 8176,
+        "shittis": 3
     },
     {
         "pool": "CHEF",
@@ -40,10 +40,10 @@
     },
     {
         "pool": "QCPOL",
-        "weight raw": 21296.92,
-        "cashg's": 11230,
-        "cg matched": 6244,
-        "cg matched%": 55.60106856634016,
+        "weight raw": 21560.92,
+        "cashg's": 11491,
+        "cg matched": 6247,
+        "cg matched%": 54.36428509268123,
         "gnomeskies": 69,
         "gn matched": 45,
         "gn matched%": 65.21739130434783,
@@ -66,29 +66,29 @@
     },
     {
         "pool": "SEA",
-        "weight raw": 31919.57,
-        "cashg's": 18387,
-        "cg matched": 5004,
-        "cg matched%": 27.2148800783162,
+        "weight raw": 31913.57,
+        "cashg's": 18382,
+        "cg matched": 5003,
+        "cg matched%": 27.21684256337722,
         "gnomeskies": 196,
         "gn matched": 120,
         "gn matched%": 61.224489795918366,
         "special gnomes": 19,
         "shittis with cgs": 5353,
-        "shittis": 6
+        "shittis": 5
     },
     {
         "pool": "WOOF",
-        "weight raw": 31610.44,
-        "cashg's": 15346,
-        "cg matched": 8549,
-        "cg matched%": 55.708327903036626,
+        "weight raw": 31140.489999999998,
+        "cashg's": 15105,
+        "cg matched": 8358,
+        "cg matched%": 55.33267130089374,
         "gnomeskies": 96,
         "gn matched": 78,
         "gn matched%": 81.25,
         "special gnomes": 17,
-        "shittis with cgs": 7276,
-        "shittis": 7
+        "shittis with cgs": 7221,
+        "shittis": 6
     },
     {
         "pool": "DDOS",
@@ -105,15 +105,15 @@
     },
     {
         "pool": "FARM",
-        "weight raw": 46241.24,
-        "cashg's": 24097,
-        "cg matched": 9191,
-        "cg matched%": 38.14167738722662,
+        "weight raw": 45924.619999999995,
+        "cashg's": 23936,
+        "cg matched": 9034,
+        "cg matched%": 37.7423128342246,
         "gnomeskies": 82,
         "gn matched": 48,
         "gn matched%": 58.536585365853654,
         "special gnomes": 7,
-        "shittis with cgs": 15896,
+        "shittis with cgs": 15898,
         "shittis": 12
     },
     {
@@ -157,10 +157,10 @@
     },
     {
         "pool": "BONE",
-        "weight raw": 39586.51,
-        "cashg's": 19321,
-        "cg matched": 9643,
-        "cg matched%": 49.90942497800321,
+        "weight raw": 39591.51,
+        "cashg's": 19324,
+        "cg matched": 9645,
+        "cg matched%": 49.912026495549576,
         "gnomeskies": 171,
         "gn matched": 128,
         "gn matched%": 74.85380116959064,
@@ -179,7 +179,7 @@
         "gn matched%": 52.04081632653062,
         "special gnomes": 16,
         "shittis with cgs": 5426,
-        "shittis": 5
+        "shittis": 4
     },
     {
         "pool": "VEGAS",
@@ -196,10 +196,10 @@
     },
     {
         "pool": "HAZEL",
-        "weight raw": 26056.78,
-        "cashg's": 11322,
-        "cg matched": 8717,
-        "cg matched%": 76.99169757993288,
+        "weight raw": 26062.78,
+        "cashg's": 11326,
+        "cg matched": 8719,
+        "cg matched%": 76.98216493024898,
         "gnomeskies": 43,
         "gn matched": 31,
         "gn matched%": 72.09302325581395,
