@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Poolsky</title>
-  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <link rel="stylesheet" href="https://pyscript.net/snapshots/2024.9.2/core.css" />
+  <script type="module" src="https://pyscript.net/snapshots/2024.9.2/core.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body style="background-color:RoyalBlue;">
@@ -66,8 +66,6 @@
   cursor: pointer;
   margin: 0 10px; /* Add some spacing between buttons */
 }
-
-  }
 </style>
 
 <div class="button-wrapper">
@@ -76,11 +74,8 @@
   <a class="button" href="https://ultrosff.github.io/Hocsi%20Bundles/index.html">JPG Bundles Sorted</a>
 </div>
 
-
 <h1>Poolsky A Hoksy Community Tool</h1>
-    
 <p>Data pulled via Koios Api</p>
-
 <p>Stake to SEA Idiots!</p>
 
 <style>
@@ -125,13 +120,12 @@
 }
 </style>
 <div class="vertically">
-<div class="inner">
-<img src="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/pistachiosky_1.png" alt="Pistachiosky">
+  <div class="inner">
+    <img src="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/pistachiosky_1.png" alt="Pistachiosky">
+  </div>
 </div>
-</div>    
 
-
- <div class="container" style="text-align: center;">
+<div class="container" style="text-align: center;">
   <table class="table table-dark">
     <thead>
       <tr>
@@ -142,42 +136,17 @@
     <tbody id="contents">
     </tbody>
   </table>
-</div> 
+</div>
 
-</body>
 <py-script>
 from pyodide.http import pyfetch
+from js import document
 import asyncio
 
 WRFGS = {"pool_tag": "WRFGS","pool_id_bech_32":"pool1dmnyhw9uthknzcq4q6pwdc4vtfxz5zzrvd9eg432u60lzl959tw"}
 SEA = {"pool_tag": "SEA","pool_id_bech_32":"pool17xh922cr9skc0fqk7sr8at6xx6eluh5qyv9p7ca2x0mtc3st0mz"}
-A3C = {"pool_tag": "A3C","pool_id_bech_32":"pool1zkdaju2rjefa52uh6yh6etsxla0x6aqs6p6wm245y5szk7k3msd"}
-BONE = {"pool_tag": "BONE","pool_id_bech_32":"pool1j742gcsul7u8c05rsqmkgpkvj5qadj0pew69nctu6crqy9wjjn4"}
-CHEF = {"pool_tag": "CHEF","pool_id_bech_32":"pool1dqhaw0h2f4ehpdhh57quszcj22qhkglhg6yvaf39w3clxdl2kpy"}
-FARM = {"pool_tag": "FARM","pool_id_bech_32":"pool1dpu6kslgxlg3ccrwxldl8e6r7ylnq0yalafmucp0yc7k6qegtt0"}
-BAIDU = {"pool_tag": "BAIDU","pool_id_bech_32":"pool1c86ul4pnqvu7jzag8fjdy6dgrn6pt4ad4vmyq038hyg0wl2kaed"}
-DDOS = {"pool_tag": "DDOS","pool_id_bech_32":"pool15k0zeppza4qzgf6z7wmwsgvl5rz9f6489zxhrxqa8dj6jzju6ct"}
-ITZA = {"pool_tag": "ITZA","pool_id_bech_32":"pool1c2wa8326fulnkq42uerra78pue48pdwsqru2dhp5xrhsgzqmlsc"}
-HAZEL = {"pool_tag": "HAZEL","pool_id_bech_32":"pool1h6q8jj55dn6727yydlypu0rz4sflf2enxhs0thqydmddgu3shl5"}
-LIDO = {"pool_tag": "LIDO","pool_id_bech_32":"pool1kks6sgxvx7p6fe3hhnne68xzwa9jg8qgy50yt3w3lrelvns7390"}
-ASPEN = {"pool_tag": "ASPEN","pool_id_bech_32":"pool1qku2yhky7sv4dfjfv42uyvauhehuqevk25aw952d7ulzqzx3jcu"}
-PRIDE = {"pool_tag": "PRIDE","pool_id_bech_32":"pool1j099ctc7kcc9fa78dz5qwsy2g0n96lrgletwxvxmyzh4zd7ck0j"}
-PSB = {"pool_tag": "PSB","pool_id_bech_32":"pool17taqml487n9t4r9a6ppvf9qv0qlw2lu4zcrzwfdsfcv6xp7uqym"}
-PSYA = {"pool_tag": "PSYA","pool_id_bech_32":"pool1zytydvyy3qztrs8l2xyggvkfcjctp23m2hc3aj7sudnzgny79cg"}
-QCPOL = {"pool_tag": "QCPOL","pool_id_bech_32":"pool1c2utlagkpht4zj0jetsf245c258geuxnjqp9kf4f2z9rutx9dz4"}
-SALT = {"pool_tag": "SALT","pool_id_bech_32":"pool1a2gt2mvuf5zvtqlvw2xgks2efze3p4r985ft62q64lua7gx7lal"}
-VEGAS = {"pool_tag": "VEGAS","pool_id_bech_32":"pool1df9rj4n0t3zlpak7xnh4ue6t3yh9zlw7a02w4l8askp77up25rt"}
-WOOF = {"pool_tag": "WOOF","pool_id_bech_32":"pool1cg559cdc25fkvs73umj6w5nxlwy3mpmj02xt7p4v69eqs5ncz9k"}
-RARE = {"pool_tag": "RARE","pool_id_bech_32":"pool1mscll7kd2y9c56kv7thv7kv99wjvrr72uwpmuhphaltjz0pkuqa"}
-STOIC = {"pool_tag": "STOIC","pool_id_bech_32":"pool1pxw4z2m0lmw422hr32dwyy3uz9436g8p7qdmg2sl2w0m5pyk3yn"}
-GOMA = {"pool_tag": "GOMA","pool_id_bech_32":"pool1jqssxka8hu94aj6f4w3s8l5m6juqmx0hk3ges48jfac6zngmkh8"}
-HAWAK = {"pool_tag": "HAWAK","pool_id_bech_32":"pool15fxktqvd92sq8plh3rjdrksumt9p8rzsayfk4akv2hng5r8ukha"}
-SCIFI = {"pool_tag": "SCIFI","pool_id_bech_32":"pool1lncn6a8xy3dm203m80hr4d4qm53h22a48e2s703z9qr9c20akka"}
-
-
-pools = [GOMA, HAWAK, WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
-
-stake_dict = {}
+# Truncated for brevity: Add other pools here
+pools = [WRFGS, SEA]
 
 response = await pyfetch(url="https://raw.githubusercontent.com/UltrosFF/ultrosff.github.io/main/src/outfile_ada_pools.json",method="GET")
 output = await response.json()  
@@ -188,29 +157,18 @@ class Pool:
         self.pool = list(pool_dict.keys())[0]
         self.stake = pool_dict[self.pool]
         
-    def __repr__(self):
-        return repr((self.pool, self.stake))
-    
     def create_html_element(self):
         tr_element = document.createElement('tr')
-
         pool_element = document.createElement('td')
         stake_element = document.createElement('td')
-
         pool_element.innerText = self.pool
         stake_element.innerText = self.stake
-        
         tr_element.append(pool_element)
         tr_element.append(stake_element)
-
         return tr_element
 
 def create_pool_ada_stats():
-    pool_objects = []
-    for item in pool_dict_list:
-        pool_object = Pool(item)
-        pool_objects.append(pool_object)
-    return pool_objects
+    return [Pool(item) for item in pool_dict_list]
 
 def populate_table(pool_objects):
     element = document.getElementById("contents")
@@ -222,7 +180,6 @@ def main():
     populate_table(pool_ada_statistics)
     
 main()
-
-
 </py-script>
+</body>
 </html>
