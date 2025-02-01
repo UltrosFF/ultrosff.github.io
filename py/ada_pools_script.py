@@ -27,6 +27,8 @@ STOIC = {"pool_tag": "STOIC","pool_id_bech_32":"pool1pxw4z2m0lmw422hr32dwyy3uz94
 GOMA = {"pool_tag": "GOMA","pool_id_bech_32":"pool1jqssxka8hu94aj6f4w3s8l5m6juqmx0hk3ges48jfac6zngmkh8"}
 HAWAK = {"pool_tag": "HAWAK","pool_id_bech_32":"pool15fxktqvd92sq8plh3rjdrksumt9p8rzsayfk4akv2hng5r8ukha"}
 SCIFI = {"pool_tag": "SCIFI","pool_id_bech_32":"pool1lncn6a8xy3dm203m80hr4d4qm53h22a48e2s703z9qr9c20akka"}
+EASY1 = {"pool_tag": "EASY1","pool_id_bech_32":"pool1yr0cv3dtmhcfgqa6yetvmf769ngk89e6tepecmjrmjl2jzcw2lm"}
+MALU = {"pool_tag": "MALU","pool_id_bech_32":"pool18zf8txwv8lmtpq2src8wrhz0pjut5qft8h5tfxnctwc95r7jvvj"}
 
 
 pools = [GOMA, HAWAK, WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
