@@ -31,7 +31,7 @@ EASY1 = {"pool_tag": "EASY1","pool_id_bech_32":"pool1yr0cv3dtmhcfgqa6yetvmf769ng
 MALU = {"pool_tag": "MALU","pool_id_bech_32":"pool18zf8txwv8lmtpq2src8wrhz0pjut5qft8h5tfxnctwc95r7jvvj"}
 
 
-pools = [GOMA, HAWAK, WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
+pools = [MALU, EASY1, GOMA, HAWAK, WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
 
 stake_dict = {}
 
