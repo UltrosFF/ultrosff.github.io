@@ -24,6 +24,43 @@ POLICY_ID_SPECIAL= "dfdfc6dc2104fb78a54d942253439d86d550947307074eaa7e0de50c"
 
 #POOLS_ID_AND_TRAITS
 
+EASY1 = {
+    'id': "20df8645abddf09403ba2656cda7da2cd163973a5e439c6e43dcbea9",
+    "pool": "EASY1",
+    "traits": [
+        'bear', 'holographic', 'hoskpig', 'elementalfire', 
+        'yellow', 'radioactiveyellow', 'epilogue', 'livestream', 
+        'spiderlegs', 
+        'redwoolyhat', 'bicyclehelmetred', 'blackandwhitejester', 
+        'staypalmgold', 'silvercrownerror', 'bycocket', 'fastfood', 
+        '2stplacemedal', 
+        'seasick', 'hoskytwoeyes', 'sphinxeyes', 'elementalred', 
+        'festiveholidaydogeyes', 
+        'candycane', 'foolsgold', 'ngmi', 'trick', 
+        'fliesanimated', 'enchantedfog'
+    ],
+    "gnome_traits": ["wedontexisthaha"]
+}
+
+MALU = {
+    'id': "38927599cc3ff6b081501e0ee1dc4f0cb8ba012b3de8b49a785bb05a",
+    "pool": "MALU",
+    "traits": [
+        'turtle', 'gravestone', 'sprinkles', 'radioactivepurple', 
+        'goldframeception', 'ganja', 'slate', 'happytrees-jesart', 
+        'orangepinkgradient', 'twilighttones', 
+        'pizza', 
+        'partyhat', 'yellowfeatherhat', 'chefhat', 'corkhat', 
+        'horns', 'holographichat', 'headwrap', 'tophatrederror', 
+        'superhero', 
+        'wereeyes', 'blinking', 
+        '1rdbirthdaypin', 'birthdayballoons', 
+        'goodboy', 'happy', 'ooooo'
+    ],
+    "gnome_traits": ["wedontexisthaha"]
+}
+
+
 RARE = {'id': "dc31fffacd510b8a6accf2eecf59852ba4c18fcae383be5c37efd721",
         "pool": "RARE",
         "traits": ['Red Collar Gold Spikes', 'Doggy Bowl', 'Out-Of-Ink', 'Cyan', 'Poo', 'Granite', 'GN', 'Notepad', 'Sahara', 'Lunar New Year Red Animated', 'Playing Card', 'Vegas Computer', 'Prison Bars Animated', 'Miner', 'Santa Hat', 'Tea Cup', 'Theme Park', 'YOLO Hat', 'Blue Wooly Hat Error', 'Mollusk Print Play Error', 'Hoskasaur Eyes', 'Hypno Dizzy Eyes', 'Clown Eyes', 'Envy Eyes', 'Candle Left', 'Diamond Stud', 'Blue Dog', 'Tears', 'Retro Rainbow Eyes', 'Red Laser Error', 'Stitched Up', 'Original Mouth']
@@ -435,7 +472,7 @@ def pool_stats(pool_dict):
     return sequence
 
 
-pools = [GOMA, HAWAK, RARE, SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
+pools = [EASY1, MALU, GOMA, HAWAK, RARE, SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
 
 
 
