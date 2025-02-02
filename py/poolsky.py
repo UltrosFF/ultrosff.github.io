@@ -28,16 +28,16 @@ EASY1 = {
     'id': "20df8645abddf09403ba2656cda7da2cd163973a5e439c6e43dcbea9",
     "pool": "EASY1",
     "traits": [
-        'bear', 'holographic', 'hoskpig', 'elementalfire', 
-        'yellow', 'radioactiveyellow', 'epilogue', 'livestream', 
-        'spiderlegs', 
-        'redwoolyhat', 'bicyclehelmetred', 'blackandwhitejester', 
-        'staypalmgold', 'silvercrownerror', 'bycocket', 'fastfood', 
+        'Bear', 'Holographic', 'Hoskpig', 'Elementalfire', 
+        'Yellow', 'Radioactiveyellow', 'Epilogue', 'Livestream', 
+        'Spiderlegs', 
+        'Redwoolyhat', 'Bicyclehelmetred', 'Blackandwhitejester', 
+        'Staypalmgold', 'Silvercrownerror', 'Bycocket', 'Fastfood', 
         '2stplacemedal', 
-        'seasick', 'hoskytwoeyes', 'sphinxeyes', 'elementalred', 
-        'festiveholidaydogeyes', 
-        'candycane', 'foolsgold', 'ngmi', 'trick', 
-        'fliesanimated', 'enchantedfog'
+        'Seasick', 'Hoskytwoeyes', 'Sphinxeyes', 'Elementalred', 
+        'Festiveholidaydogeyes', 
+        'Candycane', 'Foolsgold', 'NGMI', 'Trick', 
+        'Fliesanimated', 'Enchantedfog'
     ],
     "gnome_traits": ["wedontexisthaha"]
 }
@@ -46,16 +46,16 @@ MALU = {
     'id': "38927599cc3ff6b081501e0ee1dc4f0cb8ba012b3de8b49a785bb05a",
     "pool": "MALU",
     "traits": [
-        'turtle', 'gravestone', 'sprinkles', 'radioactivepurple', 
-        'goldframeception', 'ganja', 'slate', 'happytrees-jesart', 
-        'orangepinkgradient', 'twilighttones', 
-        'pizza', 
-        'partyhat', 'yellowfeatherhat', 'chefhat', 'corkhat', 
-        'horns', 'holographichat', 'headwrap', 'tophatrederror', 
-        'superhero', 
-        'wereeyes', 'blinking', 
-        '1rdbirthdaypin', 'birthdayballoons', 
-        'goodboy', 'happy', 'ooooo'
+        'Turtle', 'Gravestone', 'Sprinkles', 'Radioactivepurple', 
+        'Goldframeception', 'Ganja', 'Slate', 'Happytrees-jesart', 
+        'Orangepinkgradient', 'Twilighttones', 
+        'Pizza', 
+        'Partyhat', 'Yellowfeatherhat', 'Chefhat', 'Corkhat', 
+        'Horns', 'Holographichat', 'Headwrap', 'Tophatrederror', 
+        'Superhero', 
+        'Wereeyes', 'Blinking', 
+        '1rdbirthdaypin', 'Birthdayballoons', 
+        'Goodboy', 'Happy', 'Ooooo'
     ],
     "gnome_traits": ["wedontexisthaha"]
 }
