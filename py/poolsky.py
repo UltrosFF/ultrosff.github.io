@@ -94,8 +94,8 @@ QCPOL = {'id': 'c2b8bff5160dd75149f2cae0955698550e8cf0d390025b26a9508a3e',
  'pool': 'QCPOL',
  'traits': ['Cigarette', 'Bubblegum', 'Strawberry', 'Fighter Pilot Mask', 'Eyepatch Left', 'Night Vision Goggles', 'Black Lennons', 'Flat Peak', 'Halo', 'Gold Ribbon Hat', 'Purple Hat', 'Lawyer Wig', 'Sweatband Error', 'Prison', 'Neon', 'Crimson Haunted Moon', 'Wind Gray Gradient', 'Vote', 'LED', 'Cut the Cake', 'Catastrophe', "It's Raining!", 'Black Bowtie', 'Diamond Chain', 'Bubblebath', 'Jake', 'Red Panda', 'Ape S#!t', 'Double Right Ring Errors'],"gnome_traits": ['Cheshire']}
 
-ITZA = {'id': 'c29dd3c55a4f3f3b02aae6463ef8e1e66a70b5d000f8a6dc3430ef04',
- 'pool': 'ITZA',
+WEED = {'id': '932a460e99687c00e8afbda204f1aedb9479a9c4448c4bf738058590',
+ 'pool': 'WEED',
  'traits': ['Pink Eye', 'Heterochromia', 'Halfway Original', 'Mirrored Glasses', 'Goggles', 'Sunset Glasses', '3D Glasses Error', 'Spin Top', 'Crown', 'FUD Cap', 'Major Hosky', 'Poo Cap', 'Straw Hat', 'Poo Hat Error', 'Double Right Rings', 'Bandaged Ear Right', 'Red Earphones', 'Green Gradient', 'Blue Gradient', 'Cosmos', 'Dimalix', 'Maffs', 'Neon Pink Gradient', 'Beach', 'Green Haunted Moon', 'Zipped', 'War Paint', 'Yellow Dog', 'Radioactive Green', 'Hoskytwo', 'Jake Droopy', 'Out Of Ink', 'Crypto Ticker', 'Black and White Jester Neck'],"gnome_traits": ['Taco']}
 
 SEA = {'id': 'f1ae552b032c2d87a416f4067eaf4636b3fe5e80230a1f63aa33f6bc',
@@ -472,7 +472,7 @@ def pool_stats(pool_dict):
     return sequence
 
 
-pools = [EASY1, MALU, GOMA, HAWAK, RARE, SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
+pools = [EASY1, MALU, GOMA, HAWAK, RARE, SALT, CHEF, QCPOL, WEED, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN, STOIC] 
 
 
 
