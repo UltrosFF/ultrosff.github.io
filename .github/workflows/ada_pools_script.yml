@@ -1,9 +1,9 @@
 name: Run Ada Pools Script
 
-on:
-  schedule:
-    - cron: '0 */2 * * *' # Schedule to run every 30 minutes
-  workflow_dispatch: # Manual trigger
+#on:
+#  schedule:
+#    - cron: '0 */2 * * *' # Schedule to run every 30 minutes
+#  workflow_dispatch: # Manual trigger
 
 jobs:
   build:
