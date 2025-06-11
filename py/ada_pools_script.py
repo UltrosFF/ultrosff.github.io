@@ -11,7 +11,7 @@ CHEF = {"pool_tag": "CHEF","pool_id_bech_32":"pool1dqhaw0h2f4ehpdhh57quszcj22qhk
 FARM = {"pool_tag": "FARM","pool_id_bech_32":"pool1dpu6kslgxlg3ccrwxldl8e6r7ylnq0yalafmucp0yc7k6qegtt0"}
 BAIDU = {"pool_tag": "BAIDU","pool_id_bech_32":"pool1c86ul4pnqvu7jzag8fjdy6dgrn6pt4ad4vmyq038hyg0wl2kaed"}
 DDOS = {"pool_tag": "DDOS","pool_id_bech_32":"pool15k0zeppza4qzgf6z7wmwsgvl5rz9f6489zxhrxqa8dj6jzju6ct"}
-ITZA = {"pool_tag": "ITZA","pool_id_bech_32":"pool1c2wa8326fulnkq42uerra78pue48pdwsqru2dhp5xrhsgzqmlsc"}
+WEED = {"pool_tag": "WEED","pool_id_bech_32":"pool1jv4yvr5edp7qp690hk3qfudwmw28n2wygjxyhaecqkzeqh0wlem"}
 HAZEL = {"pool_tag": "HAZEL","pool_id_bech_32":"pool1h6q8jj55dn6727yydlypu0rz4sflf2enxhs0thqydmddgu3shl5"}
 LIDO = {"pool_tag": "LIDO","pool_id_bech_32":"pool1kks6sgxvx7p6fe3hhnne68xzwa9jg8qgy50yt3w3lrelvns7390"}
 ASPEN = {"pool_tag": "ASPEN","pool_id_bech_32":"pool1qku2yhky7sv4dfjfv42uyvauhehuqevk25aw952d7ulzqzx3jcu"}
@@ -31,7 +31,8 @@ EASY1 = {"pool_tag": "EASY1","pool_id_bech_32":"pool1yr0cv3dtmhcfgqa6yetvmf769ng
 MALU = {"pool_tag": "MALU","pool_id_bech_32":"pool18zf8txwv8lmtpq2src8wrhz0pjut5qft8h5tfxnctwc95r7jvvj"}
 
 
-pools = [MALU, EASY1, GOMA, HAWAK, WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, ITZA, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
+
+pools = [MALU, EASY1, GOMA, HAWAK, WRFGS, STOIC,RARE,SALT, CHEF, QCPOL, WEED, SEA, WOOF, DDOS, FARM, PSYA, PSB, A3C, BONE, PRIDE, VEGAS, HAZEL, BAIDU, LIDO, ASPEN]
 
 stake_dict = {}
 
