@@ -53,10 +53,10 @@
     },
     {
         "pool": "RARE",
-        "weight raw": 25635.75,
-        "cashg's": 12699,
-        "cg matched": 5872,
-        "cg matched%": 46.23986140640996,
+        "weight raw": 25613.75,
+        "cashg's": 12684,
+        "cg matched": 5865,
+        "cg matched%": 46.239356669820246,
         "gnomeskies": 40,
         "gn matched": 0,
         "gn matched%": 0.0,
@@ -105,10 +105,10 @@
     },
     {
         "pool": "WEED",
-        "weight raw": 26709.34,
-        "cashg's": 13414,
-        "cg matched": 5337,
-        "cg matched%": 39.78678992097808,
+        "weight raw": 26686.34,
+        "cashg's": 13394,
+        "cg matched": 5334,
+        "cg matched%": 39.82380170225474,
         "gnomeskies": 145,
         "gn matched": 121,
         "gn matched%": 83.44827586206897,
@@ -196,15 +196,15 @@
     },
     {
         "pool": "A3C",
-        "weight raw": 30753.17,
-        "cashg's": 16368,
-        "cg matched": 7077,
-        "cg matched%": 43.23680351906158,
-        "gnomeskies": 137,
+        "weight raw": 30756.07,
+        "cashg's": 16378,
+        "cg matched": 7078,
+        "cg matched%": 43.216509952375134,
+        "gnomeskies": 136,
         "gn matched": 96,
-        "gn matched%": 70.07299270072993,
+        "gn matched%": 70.58823529411765,
         "special gnomes": 46,
-        "shittis with cgs": 5193,
+        "shittis with cgs": 5203,
         "shittis": 5
     },
     {
@@ -222,7 +222,7 @@
     },
     {
         "pool": "PRIDE",
-        "weight raw": 25627.489999999998,
+        "weight raw": 24509.69,
         "cashg's": 14849,
         "cg matched": 6564,
         "cg matched%": 44.204996969492896,
@@ -230,8 +230,8 @@
         "gn matched": 50,
         "gn matched%": 56.81818181818182,
         "special gnomes": 12,
-        "shittis with cgs": 3021,
-        "shittis": 4
+        "shittis with cgs": 1401,
+        "shittis": 3
     },
     {
         "pool": "VEGAS",
@@ -287,15 +287,15 @@
     },
     {
         "pool": "ASPEN",
-        "weight raw": 24396.08,
-        "cashg's": 11465,
-        "cg matched": 7198,
-        "cg matched%": 62.78238116005234,
+        "weight raw": 24386.32,
+        "cashg's": 11461,
+        "cg matched": 7195,
+        "cg matched%": 62.77811709274932,
         "gnomeskies": 16,
         "gn matched": 0,
         "gn matched%": 0.0,
         "special gnomes": 4,
-        "shittis with cgs": 7932,
+        "shittis with cgs": 7928,
         "shittis": 5
     },
     {
