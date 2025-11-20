@@ -40,16 +40,16 @@
     },
     {
         "pool": "HAWAK",
-        "weight raw": 23814.33,
-        "cashg's": 9816,
+        "weight raw": 24006.77,
+        "cashg's": 9818,
         "cg matched": 8144,
-        "cg matched%": 82.96658516707417,
+        "cg matched%": 82.9496842534121,
         "gnomeskies": 17,
         "gn matched": 0,
         "gn matched%": 0.0,
         "special gnomes": 8,
-        "shittis with cgs": 8057,
-        "shittis": 6
+        "shittis with cgs": 8333,
+        "shittis": 7
     },
     {
         "pool": "RARE",
@@ -105,15 +105,15 @@
     },
     {
         "pool": "WEED",
-        "weight raw": 26668.03,
-        "cashg's": 13377,
+        "weight raw": 26669.72,
+        "cashg's": 13378,
         "cg matched": 5332,
-        "cg matched%": 39.85946026762353,
+        "cg matched%": 39.85648078935566,
         "gnomeskies": 145,
         "gn matched": 121,
         "gn matched%": 83.44827586206897,
         "special gnomes": 9,
-        "shittis with cgs": 5687,
+        "shittis with cgs": 5688,
         "shittis": 4
     },
     {
@@ -235,10 +235,10 @@
     },
     {
         "pool": "VEGAS",
-        "weight raw": 27277.48,
-        "cashg's": 16373,
+        "weight raw": 27278.48,
+        "cashg's": 16374,
         "cg matched": 5358,
-        "cg matched%": 32.724607585659314,
+        "cg matched%": 32.722609014290946,
         "gnomeskies": 152,
         "gn matched": 79,
         "gn matched%": 51.973684210526315,
