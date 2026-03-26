@@ -66,15 +66,15 @@
     },
     {
         "pool": "SALT",
-        "weight raw": 23464.86,
-        "cashg's": 10525,
-        "cg matched": 7359,
-        "cg matched%": 69.91923990498813,
+        "weight raw": 23470.239999999998,
+        "cashg's": 10527,
+        "cg matched": 7361,
+        "cg matched%": 69.92495487793293,
         "gnomeskies": 62,
         "gn matched": 31,
         "gn matched%": 50.0,
         "special gnomes": 10,
-        "shittis with cgs": 5994,
+        "shittis with cgs": 5996,
         "shittis": 1
     },
     {
@@ -105,15 +105,15 @@
     },
     {
         "pool": "WEED",
-        "weight raw": 25620.77,
-        "cashg's": 12622,
+        "weight raw": 25617.39,
+        "cashg's": 12620,
         "cg matched": 5373,
-        "cg matched%": 42.56853113611155,
+        "cg matched%": 42.57527733755943,
         "gnomeskies": 106,
         "gn matched": 90,
         "gn matched%": 84.90566037735849,
         "special gnomes": 8,
-        "shittis with cgs": 6733,
+        "shittis with cgs": 6731,
         "shittis": 5
     },
     {
@@ -300,15 +300,15 @@
     },
     {
         "pool": "STOIC",
-        "weight raw": 25683.11,
-        "cashg's": 11193,
-        "cg matched": 9015,
-        "cg matched%": 80.54140980970249,
+        "weight raw": 25685.8,
+        "cashg's": 11194,
+        "cg matched": 9016,
+        "cg matched%": 80.54314811506164,
         "gnomeskies": 4,
         "gn matched": 0,
         "gn matched%": 0.0,
         "special gnomes": 4,
-        "shittis with cgs": 7819,
+        "shittis with cgs": 7820,
         "shittis": 4
     }
 ]
